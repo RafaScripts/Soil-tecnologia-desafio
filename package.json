@@ -6,7 +6,7 @@
   "author": "RafaScripts <rafaelw@rafascripts.live>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "nodemon src/server.ts",
     "devd": "nomdemon src/server.ts",
     "dev": "nodemon --inspect src/server.ts"
   },
@@ -22,6 +22,7 @@
     "express": "^4.17.2",
     "pg": "^8.7.3",
     "pg-native": "^3.0.0",
-    "sucrase": "^3.20.3"
+    "sucrase": "^3.20.3",
+    "yup": "^0.32.11"
   }
 }
