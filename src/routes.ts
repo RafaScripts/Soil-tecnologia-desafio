@@ -1,10 +1,17 @@
 import express from "express";
-//import knex from "knex";
+//import knex from "./database";
 
-import userController from "./controllers/users";
+const userController = require("./controllers/users");
 
-const routes = express.Router();
+const routes = express();
 
-routes.post('/users', (req, res) => userController.index);
+/* routes.get('/', (req, res) => {
+    knex('users').then((results: any) => {
+        return res.json(results);
+    })
+});*/
+
+routes.get('/users', userController.index);
+routes.post('/users', userController.create);
 
 export default routes;
