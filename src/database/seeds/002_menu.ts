@@ -15,28 +15,7 @@ export async function seed(knex: Knex): Promise<void> {
             vegetal: "rucula: 80g",
             greens: "batata: 50g",
             fruits: "2 maças ou 3 bananas"
-        },
+        }
 
-        {
-            user_id: 1,
-            week: "2",
-            time: "almoço",
-            protein: "Carne vermelha: 200g",
-            carb: "Arroz integral: 1/2 xicara",
-            vegetal: "rucula: 80g",
-            greens: "batata: 50g",
-            fruits: "2 maças ou 3 bananas"
-        },
-
-        {
-            user_id: 1,
-            week: "3",
-            time: "almoço",
-            protein: "Carne vermelha: 200g",
-            carb: "Arroz integral: 1/2 xicara",
-            vegetal: "rucula: 80g",
-            greens: "batata: 50g",
-            fruits: "2 maças ou 3 bananas"
-        },
     ]);
 };

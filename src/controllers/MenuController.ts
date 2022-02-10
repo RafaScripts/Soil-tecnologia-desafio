@@ -10,7 +10,19 @@ import * as yup from "yup";
 
 module.exports = {
     async index(req: any, res: any) {
-        const results = await knex('menu');
+
+        const { user_id } = req.query
+
+        const query = knex('menu');
+
+        if(user_id) {
+            query.where({ user_id: user_id })
+                .join('users', 'user_id', '=', 'menu.user_id')
+                .select('menu.*', 'users.userName')
+
+        }
+
+        const results = await query;
 
         return res.json(results);
     }
