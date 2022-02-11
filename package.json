@@ -21,8 +21,9 @@
   "dependencies": {
     "express": "^4.17.2",
     "pg": "^8.7.3",
-    "pg-native": "^3.0.0",
     "sucrase": "^3.20.3",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "bcryptjs": "^2.4.3",
+    "@types/bcryptjs": "2.4.2"
   }
 }

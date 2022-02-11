@@ -7,7 +7,7 @@ module.exports = {
             port : 5432,
             user : 'postgres',
             password : '032211',
-            database : 'magrelin'
+            database : 'desafio'
         },
         migrations: {
             directory: `${__dirname}/src/database/migrations`

@@ -1,12 +1,7 @@
 import knex from "../database/index";
 import * as yup from "yup";
+import bcrypt from "bcryptjs";
 
-/*interface user {
-    userName: string,
-    email: string,
-    password: string,
-    provider: boolean
-}*/
 
 module.exports = {
     async index(req: any, res: any){
@@ -26,20 +21,16 @@ module.exports = {
             return res.status(400).json({error: "Validation fails"});
         }
 
-        /*const exceptionUser = await knex('users').select({where: {email: req.body.email}})
 
+        const { id, userName, email, provider} = req.body;
 
-        if (exceptionUser) {
-            return res.status(400).json({error: "Usuario já registrado"});
-        }*/
-
-        const { id, userName, email, password, provider} = req.body;
+        const password_hash = await bcrypt.hash(req.body.password, 8);
 
         try {
             await knex('users').insert({
                 userName,
                 email,
-                password,
+                password_hash,
                 provider
             });
         }catch (e) {
@@ -58,13 +49,20 @@ module.exports = {
 
     async update(req: any, res: any){
 
-        const { userName, email, password } = req.body
+        const { userName, email } = req.body
         const { id } = req.params
 
+        const password = await bcrypt.hash(req.body.password, 8);
 
-        await knex('users')
-            .update({ userName, email, password })
-            .where({ id })
+        try {
+            await knex('users')
+                .update({ userName, email, password })
+                .where({ id: id })
+        }catch (e) {
+            return res.status(401).json('algo deu errado');
+        }
+
+
 
         return res.status(200).json({ id, userName, email, password });
     },
