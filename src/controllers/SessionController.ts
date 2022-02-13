@@ -34,7 +34,18 @@ module.exports = {
             return res.status(400).json("Password does not match");
         }
 
-        return res.status(200).json(user);
+        const { id, name } = user;
+
+        return res.json({
+            user: {
+                id,
+                name,
+                email,
+            },
+            token: jwt.sign({id}, authConfig.secret, {
+                expiresIn: authConfig.expiresIn
+            }),
+        });
 
     }
 }

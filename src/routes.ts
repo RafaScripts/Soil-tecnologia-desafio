@@ -15,13 +15,17 @@ const routes = express();
 });*/
 
 
+
+// rota de login
+routes.post('/sessions', SessionController.store);
+
+routes.use(authMiddleware);
+
 // Rotas do CRUD de Usuarios
 routes.get('/users', userController.index)
     .post('/users', userController.create)
     .put('/users/:id', userController.update)
     .delete('/users/:id', userController.delete);
-
-routes.post('/sessions', SessionController.store);
 
 // Rotas do CRUD de menu
 routes.get('/users/menu/:user_id', MenuController.index)
