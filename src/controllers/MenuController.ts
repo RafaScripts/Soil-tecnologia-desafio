@@ -1,5 +1,5 @@
 import knex from "../database/index";
-import * as yup from "yup";
+//import * as yup from "yup";
 
 /*interface user {
     userName: string,
@@ -11,15 +11,13 @@ import * as yup from "yup";
 module.exports = {
     async index(req: any, res: any) {
 
-        const { user_id } = req.query
+        const { user_id } = req.params
 
         const query = knex('menu');
 
-        if(user_id) {
-            query.where({ user_id : user_id})
-                .join('users', 'user_id', '=', 'menu.user_id')
-                .select('menu.*', 'users.userName')
-
+        if(user_id) { await query.where({ user_id: user_id})
+            .join('users', 'users.id', '=', 'menu.user_id')
+            .select('menu.*', 'users.userName')
         }
 
         const results = await query;
@@ -28,7 +26,7 @@ module.exports = {
     },
 
     async create(req: any, res: any){
-        const { user_id } = req.query
+        const { user_id } = req.params
 
         const { week, time, protein, carb, vegetal, greens, fruits } = req.body
 
@@ -63,5 +61,40 @@ module.exports = {
             fruits,
             user_id });
 
+    },
+
+    async update(req: any, res: any){
+
+        const { id } = req.params
+
+        const { week, time, protein, carb, vegetal, greens, fruits } = req.body
+
+        await knex('menu').update({
+            week,
+            time,
+            protein,
+            carb,
+            vegetal,
+            greens,
+            fruits
+        }).where({ id: id })
+
+        return res.status(200).json({ time,
+            protein,
+            carb,
+            vegetal,
+            greens,
+            fruits,
+            id });
+
+    },
+
+    async delete(req: any, res: any){
+
+        const { id } = req.params;
+
+        await knex('menu').del().where({ id: id });
+
+        return res.status(200).json({ delete: 'menu deleted' });
     }
 }

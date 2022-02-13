@@ -19,6 +19,9 @@ routes.get('/users', userController.index)
     .delete('/users/:id', userController.delete);
 
 // Rotas do CRUD de menu
-routes.get('/menu', MenuController.index).post('/menu', MenuController.create);
+routes.get('/users/menu/:user_id', MenuController.index)
+    .post('/users/menu/:user_id', MenuController.create)
+    .put('/users/menu/:user_id', MenuController.update)
+    .delete('/users/menu/:user_id', MenuController.delete);
 
 export default routes;
