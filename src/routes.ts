@@ -1,8 +1,10 @@
 import express from "express";
 //import knex from "./database";
 
-const userController = require("./controllers/users");
+const userController = require("./controllers/UsersController");
 const MenuController = require("./controllers/MenuController");
+const SessionController = require("./controllers/SessionController");
+import authMiddleware from "./middlewares/auth";
 
 const routes = express();
 
@@ -12,11 +14,14 @@ const routes = express();
     })
 });*/
 
+
 // Rotas do CRUD de Usuarios
 routes.get('/users', userController.index)
     .post('/users', userController.create)
     .put('/users/:id', userController.update)
     .delete('/users/:id', userController.delete);
+
+routes.post('/sessions', SessionController.store);
 
 // Rotas do CRUD de menu
 routes.get('/users/menu/:user_id', MenuController.index)
