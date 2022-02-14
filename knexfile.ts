@@ -1,3 +1,4 @@
+// definição do banco de dados
 module.exports = {
     development: {
         client: 'pg',

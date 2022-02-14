@@ -1,18 +1,12 @@
 import express from "express";
-//import knex from "./database";
 
+// importação dos controllers e autenticação por token
 const userController = require("./controllers/UsersController");
 const MenuController = require("./controllers/MenuController");
 const SessionController = require("./controllers/SessionController");
 import authMiddleware from "./middlewares/auth";
 
 const routes = express();
-
-/* routes.get('/', (req, res) => {
-    knex('users').then((results: any) => {
-        return res.json(results);
-    })
-});*/
 
 
 
