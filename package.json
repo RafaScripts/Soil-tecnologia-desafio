@@ -6,7 +6,7 @@
   "author": "RafaScripts <rafaelw@rafascripts.live>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server.ts",
+    "start": "node src/server.ts",
     "devd": "nomdemon src/server.ts",
     "dev": "nodemon --inspect src/server.ts"
   },
