@@ -15,4 +15,4 @@ app.use(express.json());
 app.use(routes);
 
 // aberta a escuta das informações na porta 3333
-app.listen(3333);
+app.listen(process.env.PORT || 3333);
