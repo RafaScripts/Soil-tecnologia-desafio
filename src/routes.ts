@@ -25,6 +25,6 @@ routes.get('/users', userController.index)
 routes.get('/users/menu/:user_id', MenuController.index)
     .post('/users/menu/:user_id', MenuController.create)
     .put('/users/menu/:user_id', MenuController.update)
-    .delete('/users/menu/:user_id', MenuController.delete);
+    .delete('/users/menu/del/:id', MenuController.delete);
 
 export default routes;
