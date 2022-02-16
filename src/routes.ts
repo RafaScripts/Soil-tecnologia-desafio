@@ -13,7 +13,7 @@ const routes = express();
 // rota de login
 routes.post('/sessions', SessionController.store);
 
-//routes.use(authMiddleware);
+routes.use(authMiddleware);
 
 // Rotas do CRUD de Usuarios
 routes.get('/users', userController.index)
