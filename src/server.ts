@@ -6,7 +6,7 @@ import routes from "./routes";
 // inicialização do server
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: '*', credentials: true }));
 
 // declarando que usara JSON para comunicação
 app.use(express.json());
