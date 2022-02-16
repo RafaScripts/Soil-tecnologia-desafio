@@ -28,7 +28,7 @@ module.exports = {
     async create(req: any, res: any){
         const { user_id } = req.params
 
-        const { week, time, protein, carb, vegetal, greens, fruits, created } = req.body
+        const { week, time, protein, carb, vegetal, greens, fruits, creation } = req.body
 
         try {
 
@@ -41,7 +41,7 @@ module.exports = {
                     vegetal,
                     greens,
                     fruits,
-                    created,
+                    creation,
                     user_id
                 })
             }
